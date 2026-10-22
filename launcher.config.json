@@ -1,0 +1,32 @@
+{
+  "clientMode": "bundled",
+  "clientLanguage": "US",
+  "serverId": "bahamut",
+  "serverName": "Bahamut XI",
+  "serverHost": "bahamut-xi.com",
+  "websiteUrl": "https://bahamut-xi.com",
+  "registerUrl": "https://bahamut-xi.com/register",
+  "accountUrl": "https://bahamut-xi.com/account",
+  "allowAccountCreation": true,
+  "manifestUrl": "https://files.bahamut-xi.com/launcher/client/manifest.json",
+  "newsUrl": "https://files.bahamut-xi.com/launcher/news.json",
+  "addonCatalogUrl": "https://files.bahamut-xi.com/launcher/addons.json",
+  "pivotCatalogUrl": "https://files.bahamut-xi.com/launcher/pivot.json",
+  "links": {
+    "Website": "https://bahamut-xi.com",
+    "Discord": "https://discord.gg/your-invite"
+  },
+  "hairpin": false,
+  "ports": {},
+  "requiredPlugins": ["thirdparty"],
+  "defaultPlugins": ["thirdparty", "screenshot"],
+  "requiredAddons": [],
+  "defaultAddons": ["distance", "fps", "timestamp"],
+  "requiredOverlays": ["era"],
+  "theme": "bahamut",
+  "linux": {
+    "protonVersion": "GE-Proton11-5",
+    "protonUrl": "",
+    "umuUrl": ""
+  }
+}
