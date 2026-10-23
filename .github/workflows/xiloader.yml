@@ -27,7 +27,9 @@ jobs:
       - name: Collect
         shell: pwsh
         run: |
-          $exe = Get-ChildItem -Recurse -Path build -Filter xiloader.exe | Select-Object -First 1
+          # Phoenix's CMakeLists writes the exe to the source root, not the build folder.
+          $exe = Get-Item xiloader.exe -ErrorAction SilentlyContinue
+          if (-not $exe) { $exe = Get-ChildItem -Recurse -Path build -Filter xiloader.exe | Select-Object -First 1 }
           if (-not $exe) { throw 'xiloader.exe was not built' }
           New-Item -ItemType Directory -Force out | Out-Null
           Copy-Item $exe.FullName out/xiloader.exe
