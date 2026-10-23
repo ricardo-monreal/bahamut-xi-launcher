@@ -199,6 +199,15 @@ export function installedProtons(): string[] {
     .sort((a, b) => b.localeCompare(a, undefined, { numeric: true }))
 }
 
+/**
+ * The downloaded folder for a pinned GE-Proton version. Releases that also ship ARM builds name
+ * their files with a CPU suffix ("GE-Proton11-5-x86_64"), so the folder may not equal the tag.
+ */
+function installedProton(version: string): string | null {
+  const v = version.toLowerCase()
+  return installedProtons().find((d) => d.toLowerCase() === v || d.toLowerCase().startsWith(`${v}-`)) ?? null
+}
+
 async function githubRelease(repo: string, tag: string): Promise<{ tag: string; assets: { name: string; url: string; size: number }[] }> {
   const api = `https://api.github.com/repos/${repo}/releases/${tag ? `tags/${encodeURIComponent(tag)}` : 'latest'}`
   const res = await fetch(api, { headers: { Accept: 'application/vnd.github+json', 'User-Agent': 'xi-launcher' }, signal: AbortSignal.timeout(20_000) })
@@ -222,7 +231,10 @@ export async function ensureProton(cfg: LinuxConfig, onStatus: (msg: string) => 
   // Clean up builds for the wrong CPU (an earlier version could download the ARM build by mistake).
   for (const d of subdirs(runtimeRoot)) if (/^GE-Proton/i.test(d) && !rightArch(d)) await rm(join(runtimeRoot, d), { recursive: true, force: true })
   const wanted = cfg.protonVersion.trim()
-  if (wanted && isFile(join(runtimeRoot, wanted, 'proton'))) return join(runtimeRoot, wanted)
+  if (wanted) {
+    const have = installedProton(wanted)
+    if (have) return join(runtimeRoot, have)
+  }
   if (!wanted && !cfg.protonUrl) {
     const have = installedProtons()
     if (have.length) return join(runtimeRoot, have[0])
