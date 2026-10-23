@@ -1,7 +1,7 @@
 {
   "name": "bahamut-xi-launcher",
   "productName": "Bahamut XI",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Bahamut XI launcher: Ashita v4 + Phoenix xiloader, Windows and Linux (GE-Proton)",
   "main": "./out/main/index.js",
   "author": "Bahamut XI",
