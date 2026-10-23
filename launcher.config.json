@@ -3,26 +3,36 @@
   "clientLanguage": "US",
   "serverId": "bahamut",
   "serverName": "Bahamut XI",
-  "serverHost": "bahamut-xi.com",
-  "websiteUrl": "https://bahamut-xi.com",
-  "registerUrl": "https://bahamut-xi.com/register",
-  "accountUrl": "https://bahamut-xi.com/account",
+  "serverHost": "10.2.5.168",
+  "websiteUrl": "http://10.2.5.168",
+  "registerUrl": "http://10.2.5.168/register",
+  "accountUrl": "http://10.2.5.168/account",
   "allowAccountCreation": true,
-  "manifestUrl": "https://files.bahamut-xi.com/launcher/client/manifest.json",
-  "newsUrl": "https://files.bahamut-xi.com/launcher/news.json",
-  "addonCatalogUrl": "https://files.bahamut-xi.com/launcher/addons.json",
-  "pivotCatalogUrl": "https://files.bahamut-xi.com/launcher/pivot.json",
+  "manifestUrl": "http://10.2.5.170/launcher/client/manifest.json",
+  "newsUrl": "http://10.2.5.170/launcher/news.json",
+  "addonCatalogUrl": "http://10.2.5.170/launcher/addons.json",
+  "pivotCatalogUrl": "http://10.2.5.170/launcher/pivot.json",
   "links": {
-    "Website": "https://bahamut-xi.com",
-    "Discord": "https://discord.gg/your-invite"
+    "Website": "http://10.2.5.168"
   },
   "hairpin": false,
   "ports": {},
-  "requiredPlugins": ["thirdparty"],
-  "defaultPlugins": ["thirdparty", "screenshot"],
+  "requiredPlugins": [
+    "thirdparty"
+  ],
+  "defaultPlugins": [
+    "thirdparty",
+    "screenshot"
+  ],
   "requiredAddons": [],
-  "defaultAddons": ["distance", "fps", "timestamp"],
-  "requiredOverlays": ["era"],
+  "defaultAddons": [
+    "distance",
+    "fps",
+    "timestamp"
+  ],
+  "requiredOverlays": [
+    "era"
+  ],
   "theme": "bahamut",
   "linux": {
     "protonVersion": "GE-Proton11-5",
