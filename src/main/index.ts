@@ -11,7 +11,7 @@ import { cleanupCredentialFiles, launchGame } from './launch'
 import { CancelledError, checkForUpdates, runUpdate } from './patcher'
 import { addLocalOverlay, applyEnable, getCatalog, installPack, listPivot, removePack } from './pivot'
 import { catalogKey, getAddonCatalog, installItem, mergeCatalog, removeItem } from './catalog'
-import { findRunners, isWindows, linuxStatus, preparePrefix, recreatePrefix, resolveRunner, setRuntimeRoot, wineLogPath } from './wine'
+import { findRunners, isWindows, linuxStatus, preparePrefix, recreatePrefix, resolveRunner, setRuntimeRoot, setWinetricksUrl, wineLogPath } from './wine'
 import { ashitaDir } from './ashita'
 import { addSteamShortcut } from './steam'
 import * as web from './website'
@@ -19,6 +19,7 @@ import type { FolderKind, WebResult } from '../shared/types'
 
 const config = loadLauncherConfig()
 // Big Linux runtimes (GE-Proton, umu) go to ~/.local/share/<app>/runtimes, not the settings folder.
+setWinetricksUrl(config.linux.winetricksUrl)
 if (!isWindows) setRuntimeRoot(join(process.env.XDG_DATA_HOME || join(app.getPath('home'), '.local', 'share'), app.getName(), 'runtimes'))
 let win: BrowserWindow | null = null
 

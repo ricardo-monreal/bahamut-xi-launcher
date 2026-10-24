@@ -44,7 +44,7 @@ export function loadLauncherConfig(): LauncherConfig {
     theme: 'bahamut',
     websiteUrl: '',
     ...raw,
-    linux: { protonVersion: '', protonUrl: '', umuUrl: '', ...(raw.linux ?? {}) }
+    linux: { protonVersion: '', protonUrl: '', umuUrl: '', winetricksUrl: '', ...(raw.linux ?? {}) }
   }
   // Ashita's winefix plugin smooths over Wine/Proton quirks; on by default on Linux only.
   if (process.platform === 'linux' && !cfg.defaultPlugins.includes('winefix')) cfg.defaultPlugins = [...cfg.defaultPlugins, 'winefix']

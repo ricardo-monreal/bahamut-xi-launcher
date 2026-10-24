@@ -474,6 +474,13 @@ function saveDone(prefix: string): string[] {
   return all
 }
 
+const DEFAULT_WINETRICKS_URL = 'https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks'
+let winetricksUrl = DEFAULT_WINETRICKS_URL
+/** Where to download winetricks from (launcher.config.json linux.winetricksUrl; empty = GitHub). */
+export function setWinetricksUrl(url: string): void {
+  winetricksUrl = url.trim() || DEFAULT_WINETRICKS_URL
+}
+
 /** winetricks for custom Wine: the system one, or a copy downloaded into the runtime folder. */
 async function winetricksPath(onStatus: (msg: string) => void): Promise<string | null> {
   const sys = which('winetricks')
@@ -483,7 +490,7 @@ async function winetricksPath(onStatus: (msg: string) => void): Promise<string |
   try {
     onStatus('Downloading winetricks…')
     await mkdir(runtimeRoot, { recursive: true })
-    await download('https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks', local, () => {})
+    await download(winetricksUrl, local, () => {})
     chmodSync(local, 0o755)
     return local
   } catch {

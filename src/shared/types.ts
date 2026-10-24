@@ -64,6 +64,8 @@ export interface LinuxConfig {
   protonUrl: string
   /** Optional: download umu-launcher (zipapp .tar) from your own server instead of GitHub. */
   umuUrl: string
+  /** Optional: download winetricks (the script) from your own server instead of GitHub. Only used with a custom Wine. */
+  winetricksUrl: string
 }
 
 export type Language = 'US' | 'JP' | 'EU'
