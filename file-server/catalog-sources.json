@@ -71,7 +71,7 @@
     { "id": "combined-maps-basic", "name": "Combined Maps: Basic", "category": "Maps", "description": "Combined in-game maps.", "version": "1.0", "file": "packs/combined-maps-basic-1.0.zip" },
     { "id": "combined-maps-hd", "name": "Combined Maps: HD", "category": "Maps", "description": "Combined in-game maps in high resolution.", "version": "1.0", "file": "packs/combined-maps-hd-1.0.zip" },
     { "id": "normal-maps-labeled", "name": "Normal Maps - Labeled", "category": "Maps", "description": "Original maps with labels.", "version": "1.0", "file": "packs/normal-maps-labeled-1.0.zip" },
-    { "id": "xiview-standard", "name": "XI View: Standard", "category": "UI", "description": "Updated menu and interface graphics.", "version": "1.0", "file": "packs/xiview-standard-1.0.zip" },
-    { "id": "xiview-widescreen", "name": "XI View: Widescreen", "category": "UI", "description": "Updated interface graphics laid out for widescreen.", "version": "1.0", "file": "packs/xiview-widescreen-1.0.zip" }
+    { "id": "xiview-standard", "name": "XI View: Standard", "category": "UI", "description": "Updated menu and interface graphics.", "version": "2.5.3", "file": "packs/XiView.v2.5.3.normal.zip" },
+    { "id": "xiview-widescreen", "name": "XI View: Widescreen", "category": "UI", "description": "Updated interface graphics laid out for widescreen.", "version": "2.5.3", "file": "packs/XiView.v2.5.3.widescreen.zip" }
   ]
 }
