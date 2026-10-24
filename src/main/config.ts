@@ -141,6 +141,14 @@ function mergeGamepad(base: GamepadSettings, patch: Partial<GamepadSettings> & {
   return g
 }
 
+/** Merges on/off maps whose keys are addon or plugin names, treating names that differ only in case as one. */
+function mergeNames(base: Record<string, boolean>, patch: Record<string, boolean> | undefined): Record<string, boolean> {
+  if (!patch) return { ...base }
+  const changed = new Set(Object.keys(patch).map((k) => k.toLowerCase()))
+  const kept = Object.fromEntries(Object.entries(base).filter(([k]) => !changed.has(k.toLowerCase())))
+  return { ...kept, ...patch }
+}
+
 function mergeSettings(base: UserSettings, patch: Partial<UserSettings>): UserSettings {
   return {
     ...base,
@@ -149,8 +157,8 @@ function mergeSettings(base: UserSettings, patch: Partial<UserSettings>): UserSe
     sound: { ...base.sound, ...(patch.sound ?? {}) },
     gamepad: mergeGamepad(base.gamepad, patch.gamepad ?? {}),
     wine: { ...base.wine, ...(patch.wine ?? {}), components: { ...base.wine.components, ...(patch.wine?.components ?? {}) } },
-    addons: { ...base.addons, ...(patch.addons ?? {}) },
-    plugins: { ...base.plugins, ...(patch.plugins ?? {}) },
+    addons: mergeNames(base.addons, patch.addons),
+    plugins: mergeNames(base.plugins, patch.plugins),
     pivot: {
       enabled: { ...base.pivot.enabled, ...(patch.pivot?.enabled ?? {}) },
       local: patch.pivot?.local ?? base.pivot.local

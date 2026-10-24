@@ -65,9 +65,14 @@ export function scanAddons(installDir: string, cfg: LauncherConfig, settings: Us
         .filter((n) => !NON_PLUGIN_DLLS.has(n.toLowerCase()))
     : []
 
+  // Names are compared without case: a catalog item named "TargetLines" may install as
+  // targetlines.dll, and Windows (and Ashita's /load) don't care about case either.
   const entry = (name: string, saved: Record<string, boolean>, required: string[], defaults: string[]) => {
-    const isRequired = required.includes(name)
-    return { name, required: isRequired, enabled: isRequired || (saved[name] ?? defaults.includes(name)) }
+    const key = name.toLowerCase()
+    const has = (list: string[]) => list.some((n) => n.toLowerCase() === key)
+    const savedKey = Object.keys(saved).find((k) => k.toLowerCase() === key)
+    const isRequired = has(required)
+    return { name, required: isRequired, enabled: isRequired || (savedKey !== undefined ? saved[savedKey] : has(defaults)) }
   }
   const sort = <T extends { name: string }>(a: T, b: T) => a.name.localeCompare(b.name)
 
