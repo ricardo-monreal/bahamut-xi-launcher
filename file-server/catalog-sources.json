@@ -47,6 +47,15 @@
       "file": "addons/statustimers-1.0.zip"
     },
     {
+     "type": "plugin",
+     "name": "TargetLines",
+     "version": "1.0.1",
+     "author": "war3zlod3r",
+     "description": "Draws Final Fantasy XII style target lines during combat.",
+     "links": { "Source": "https://github.com/war3zlod3r/TargetLines-Ashita" },
+     "file": "addons/targetlines-1.0.1.zip"
+    },
+    {
       "type": "plugin",
       "name": "LegacyAC",
       "version": "1.0",
